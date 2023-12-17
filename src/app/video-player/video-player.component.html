@@ -1,0 +1,7 @@
+<video width="600" height="400" controls>
+    <source [src]="cameraStreamUrl" type="application/x-rtsp">
+    Your browser does not support the video tag.
+</video>
+<div class="buttons-contianer">
+    <button *ngFor="let space of spaces" class="btn btn-secondary space">{{ space }}</button>
+</div>

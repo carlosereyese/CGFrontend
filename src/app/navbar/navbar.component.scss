@@ -1,0 +1,42 @@
+@import "~font-awesome/css/font-awesome.css";
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0074e4;
+    color: #fff;
+    padding: 10px;
+    margin-top: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+    .navbar-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+  
+      .navbar-logo {
+        a {
+          text-decoration: none;
+          font-size: 1.5rem;
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+  
+      .navbar-icons {
+        a {
+          text-decoration: none;
+          color: #fff;
+          margin: 0 10px;
+          font-size: 1.5rem;
+  
+          i {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+  
