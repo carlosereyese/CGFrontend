@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AxiosService } from './axios.service';
+import { MovementsService } from './movements.service';
 
-describe('AxiosService', () => {
-  let service: AxiosService;
+describe('MovementsService', () => {
+  let service: MovementsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AxiosService);
+    service = TestBed.inject(MovementsService);
   });
 
   it('should be created', () => {
