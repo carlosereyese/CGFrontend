@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoService } from '../video.service';
+import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-video-player',
@@ -13,7 +14,7 @@ export class VideoPlayerComponent implements OnInit {
   videoTitle: string = 'test';
   videoUrl: SafeResourceUrl | undefined;
 
-  constructor(private videoService: VideoService, private sanitizer: DomSanitizer) {}
+  constructor(private videoService: VideoService, private webSocketService: WebsocketService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     /*
@@ -28,6 +29,13 @@ export class VideoPlayerComponent implements OnInit {
       const videoUrl = URL.createObjectURL(blob);
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
     });
+
+    this.webSocketService.getFrame();
+  }
+
+  sendMessage() {
+    console.log("enviando solicitud de video");
+    this.webSocketService.requestVideo("cocina2");
   }
 
 }

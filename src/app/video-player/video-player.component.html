@@ -7,4 +7,5 @@
 </div>
 <div class="buttons-contianer">
     <button *ngFor="let space of spaces" class="btn btn-secondary space">{{ space }}</button>
+    <button (click)="sendMessage()">Send Message</button>
 </div>
