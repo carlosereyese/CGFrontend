@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
-import { HttpClient } from '@angular/common/http';
 import { Movements } from '../domain/movements';
 import { environment } from '../../environments/environment';
-import { AuthService } from '../auth.service';
 import { MovementsService } from '../movements.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ImgModalComponent } from '../img-modal/img-modal.component';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class MainPageComponent implements OnInit {
   
   movements: Movements[];
 
-  constructor(private movementsService: MovementsService, private http: HttpClient) { this.movements = [] }
+  constructor(private movementsService: MovementsService, private dialog: MatDialog) { this.movements = [] }
   apiUrl: string = `${environment.apiUrl}`;
   
   @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
@@ -27,20 +27,15 @@ export class MainPageComponent implements OnInit {
       this.paginator.pageSizeOptions = [5, 10, 25, 100]; // Define page size options
     }
 
-    this.movementsService.getAllMovements().subscribe(
-      (response) => {
-        this.movements = response;
-          console.log('Movements:', this.movements);
-      },
-      (error) => {
-        if (error.status === 401) {
-          console.error('Unauthorized:', error);
-        } else {
-          console.error('Error:', error);
-        }
-      }
-    );
+    this.movementsService.getAllMovements()
+      .subscribe(movements => this.movements = movements);
 
+  }
+
+  openModal(movement: Movements) {
+    this.dialog.open(ImgModalComponent, {
+      data: { image: movement.image } // Pass the image data to the modal
+    });
   }
 
 }

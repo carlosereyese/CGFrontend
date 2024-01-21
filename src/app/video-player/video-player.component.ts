@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoService } from '../video.service';
 import { WebsocketService } from '../websocket.service';
+import { SpacesService } from '../spaces.service';
+import { Spaces } from '../domain/spaces';
 
 @Component({
   selector: 'app-video-player',
@@ -9,33 +11,41 @@ import { WebsocketService } from '../websocket.service';
   styleUrls: ['./video-player.component.scss']
 })
 export class VideoPlayerComponent implements OnInit {
-  spaces: string[] = ['Salon', 'Habitacion', 'Cocina'];
-
-  videoTitle: string = 'test';
+  
+  spaces: Spaces[];
   videoUrl: SafeResourceUrl | undefined;
 
-  constructor(private videoService: VideoService, private webSocketService: WebsocketService, private sanitizer: DomSanitizer) { }
+  constructor(private videoService: VideoService, private spacesService: SpacesService, 
+    private sanitizer: DomSanitizer/*, private webSocketService: WebsocketService*/) { this.spaces = [] }
 
   ngOnInit() {
-    /*
-    this.videoService.getVideo(this.videoTitle).subscribe((data: any) => {
-        const blob = new Blob([data], { type: 'video/mp4' });
-        this.videoUrl = URL.createObjectURL(blob);
-    });
-    */
 
-    this.videoService.getVideoStream(this.videoTitle).subscribe((data: any) => {
+    this.spacesService.getAllSpaces()
+      .subscribe(spaces => this.spaces = spaces);
+    
+    //this.webSocketService.getFrame();
+  }
+
+  getVideoUrl(videoTitle: string) {
+    this.videoService.getVideoStream(videoTitle).subscribe((data: any) => {
       const blob = new Blob([data], { type: 'video/mp4' });
       const videoUrl = URL.createObjectURL(blob);
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
     });
-
-    this.webSocketService.getFrame();
   }
 
-  sendMessage() {
-    console.log("enviando solicitud de video");
-    this.webSocketService.requestVideo("cocina2");
+  /*
+  ngOnDestroy() {
+    this.webSocketService.disconnect();
   }
+
+  requestVideo() {
+    this.webSocketService.requestVideo(this.videoTitle);
+  }
+
+  getVideoUrl() {
+    return this.webSocketService.getVideoUrl();
+  }
+  */
 
 }

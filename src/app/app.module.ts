@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { ImgModalComponent } from './img-modal/img-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { AuthInterceptor } from './auth.interceptor';
     NavbarComponent,
     VideoPlayerComponent,
     LoginComponent,
-    MainPageComponent
+    MainPageComponent,
+    ImgModalComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { AuthInterceptor } from './auth.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [

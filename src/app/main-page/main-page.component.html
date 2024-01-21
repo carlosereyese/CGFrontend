@@ -17,7 +17,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let movement of movements.slice((paginator.pageIndex * paginator.pageSize), ((paginator.pageIndex + 1) * paginator.pageSize))">
+                    <tr *ngFor="let movement of movements.slice((paginator.pageIndex * paginator.pageSize), ((paginator.pageIndex + 1) * paginator.pageSize))"
+                        (click)="openModal(movement)">
                         <td>{{ movement.room + " - " + movement.dateTime }}</td>
                     </tr>
                 </tbody>
