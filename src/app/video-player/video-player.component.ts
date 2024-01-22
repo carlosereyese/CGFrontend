@@ -27,6 +27,7 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   getVideoUrl(videoTitle: string) {
+    this.videoUrl = undefined;
     this.videoService.getVideoStream(videoTitle).subscribe((data: any) => {
       const blob = new Blob([data], { type: 'video/mp4' });
       const videoUrl = URL.createObjectURL(blob);
