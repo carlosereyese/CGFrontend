@@ -1,9 +1,6 @@
 <div class="videoWrapper">
-    <video *ngIf="videoUrl" autoplay [muted]="true" class="video">
-      <source [src]="videoUrl" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-</div>
+    <img *ngIf="frame" [src]="'data:image/jpg;base64,' + frame" class="img">
+</div> 
 <div class="buttons-contianer">
-    <button *ngFor="let space of spaces" class="btn btn-secondary space" (click)="getVideoUrl(space.name)" >{{ space.name }}</button>
+    <button *ngFor="let space of spaces" class="btn btn-secondary space" (click)="requestVideo(space.name)" >{{ space.name }}</button>
 </div>
