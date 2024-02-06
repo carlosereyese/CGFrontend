@@ -17,12 +17,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/authenticate`, credentials);
   }
 
-  register(username: string, password: string): void {
-    // Implement your registration logic here
-    // For example, you might make an HTTP request to a backend server
-    // to create a new user account.
-  }
-
   logout(): void {
     this.tokenStorageService.removeToken();
   }

@@ -34,7 +34,7 @@ export class LoginComponent {
 
         this.authService.login(formData).subscribe(
           (response) => {
-            const token = response.token; // Adjust this based on your API response
+            const token = response.token;
             this.tokenStorageService.saveToken(token);
             this.router.navigate(['/main']);
           },

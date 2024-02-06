@@ -28,8 +28,8 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     if (this.paginator) {
-      this.paginator.pageSize = 10; // Set the initial page size
-      this.paginator.pageSizeOptions = [5, 10, 25, 100]; // Define page size options
+      this.paginator.pageSize = 10;
+      this.paginator.pageSizeOptions = [5, 10, 25, 100];
     }
 
     this.refreshSubscription = timer(0, 5000).subscribe(() => {
@@ -45,7 +45,7 @@ export class MainPageComponent implements OnInit {
 
   openModal(movement: Movements) {
     this.dialog.open(ImgModalComponent, {
-      data: { image: movement.image } // Pass the image data to the modal
+      data: { image: movement.image }
     });
   }
 
