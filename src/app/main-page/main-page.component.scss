@@ -20,7 +20,7 @@
 
 .buttons-contianer {
     width: 100%;
-    margin: 10px;
+    margin: 5px;
     margin-top: 0;
     flex-direction: row;
     justify-content: space-evenly;
@@ -45,8 +45,10 @@
 }
 
 .alarm {
-    width: 190px;
     margin-right: 10px;
+    font-size: 16px;
+    width: 190px;
+    height: 42px;
     background-color: #8F3F3F;
     border: #8F3F3F;
     &:hover {
@@ -58,7 +60,8 @@
 }
 
 .detection {
+    font-size: 16px;
+    margin-right: 0px;
     width: 190px;
-    height: 46px;
-    font-size: 18px;
+    height: 42px;
 }

@@ -17,6 +17,9 @@ export class MainPageComponent implements OnInit {
   
   movements: Movements[];
   private refreshSubscription: Subscription = new Subscription;
+  detectionButtonText: string = 'Activar Deteccion';
+  alarmButtonText: string = 'Activar Alarma';
+
 
   constructor(private movementsService: MovementsService, private dialog: MatDialog) { this.movements = [] }
   apiUrl: string = `${environment.apiUrl}`;
@@ -44,6 +47,14 @@ export class MainPageComponent implements OnInit {
     this.dialog.open(ImgModalComponent, {
       data: { image: movement.image } // Pass the image data to the modal
     });
+  }
+
+  toggleDetection() {
+    this.detectionButtonText = (this.detectionButtonText === 'Activar Deteccion') ? 'Desactivar Deteccion' : 'Activar Deteccion';
+  }
+
+  toggleAlarm() {
+    this.alarmButtonText = (this.alarmButtonText === 'Activar Alarma') ? 'Desactivar Alarma' : 'Activar Alarma';
   }
 
 }

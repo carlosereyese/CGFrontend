@@ -6,8 +6,8 @@
     
     <div class="movement-container">
         <div class="buttons-contianer">
-            <button type="button" class="btn btn-primary btn-lg alarm">Activar Alarma</button>
-            <button type="button" class="btn btn-primary btn-lg detection">Activar Deteccion</button>
+            <button type="button" class="btn btn-primary btn-lg alarm" (click)="toggleAlarm()">{{alarmButtonText}}</button>
+            <button type="button" class="btn btn-primary btn-lg detection" (click)="toggleDetection()">{{detectionButtonText}}</button>
         </div>
         <div class="movement-history">
             <table class="table table-hover table-dark">
